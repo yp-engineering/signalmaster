@@ -56,6 +56,10 @@ io.sockets.on('connection', function (client) {
             if (cb) cb(null, name);
         }
     });
+
+    client.on('list', function (cb) {
+        cb(Object.keys(io.sockets.manager.rooms));
+    });
 });
 
 if (config.uid) process.setuid(config.uid);
